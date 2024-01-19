@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <style>
+        /*Order*/
+
+.order{
+    width: 100%;
+    height: 100vh;
+    padding: 70px 0;
+    background-image: url(img/order.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+.order h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 55px;
+}
+
+.order h1 span{
+    color: #fac031;
+    margin-right: 15px;
+    font-family: mv boli;
+}
+
+.order h1 span::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #fac031;
+    display: block;
+    position: relative;
+    bottom: 15px;
+}
+
+.order .order_main{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.order .order_main .order_image img{
+    width: 600px;
+}
+
+.order .order_main form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0 10px;
+}
+
+.order .order_main form .input p{
+    line-height: 25px;
+}
+
+.order .order_main form .input{
+    margin: 5px;
+}
+
+.order .order_main form .input input{
+    width: 300px;
+    height: 35px;
+    padding: 0 10px;
+    border: 2px solid #cccccc;
+    background: #eeeeee;
+    outline: none;
+    border-radius: 3px;
+}
+
+.order .order_main form .input input:focus{
+    border: 2px solid #fac031;
+}
+
+.order .order_main form .order_btn{
+    padding: 10px 0;
+    background: #fac031;
+    color: white;
+    width: 40%;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    <!--Order-->
+
+    <div class="order" id="Order">
+        <h1><span>Order</span>Now</h1>
+
+        <div class="order_main">
+
+            <div class="order_image">
+                <img src="img/order now.jpeg">
+            </div>
+
+            <form action="#">
+
+                <div class="input">
+                    <p>Name</p>
+                    <input type="text" placeholder="your name">
+                </div>
+
+                <div class="input">
+                    <p>Email</p>
+                    <input type="email" placeholder="your email">
+                </div>
+
+                <div class="input">
+                    <p>Number</p>
+                    <input type="tel" placeholder="your number">
+                </div>
+                <div class="input">
+                    <p>Address</p>
+                    <input type="text" placeholder="your Address">
+                </div>
+                <div class="input">
+                    <p>You Order</p>
+                    <select id="order" oninput="check()">
+                        <option value="None" disabled selected hidden>Select your order</option>
+                        <option value="Nburger">Normal burger</option>
+                        <option value="Cburger">Cheese burger</option>
+                        <option value="pizza">pizza</option>
+                        <option value="Cpizza">Cheese pizza</option>
+                        <option value="pasta">Pasta</option>
+                        <option value="noodles">Noodles</option>
+                        <option value="dabeli">Dabeli</option>
+                        <option value="masala dosa">Masala Dosa</option>
+                        <option value="Aloo tikki">Aloo tikki chaat</option>
+                        <option value="samosa">Samosa</option>
+                        <option value="Momos">Momos</option>
+                        <option value="chole kulche">Stuff chole kulche</option>
+                        <option value="paneer tikka">Paneer tikka</option>
+                        <option value="chicken burger">Chicken Burger</option>
+                        <option value="chicken fry pack">Chicken Fry Pack</option>
+                    </select>
+                </div>
+                <div class="input">
+                    <p>How Much</p>
+                    <input type="number" id="quantity" oninput="update()" disabled placeholder="how many order">
+                </div>
+                <div class="input">
+                    <p>Cost</p>
+                    <input id="cost" readonly placeholder="Rs. 00" >
+                </div>
+                <br>
+                <a href="index2.html" class="order_btn">Order Now</a>
+
+            </form>
+
+        </div>
+
+    </div>
+    <script>
+        var order
+        const menu={
+            "Nburger":60,
+            "Cburger":70,
+            "pizza":300,
+            "Cpizza":350,
+            "pasta":80,
+            "noodles":80,
+            "dabeli":40,
+            "masala dosa":90,
+            "Aloo tikki":40,
+            "samosa":30,
+            "momos":30,
+            "chole kulche":60,
+            "paneer tikka":120,
+            "chicken burger":90,
+            "chicken fry pack":200
+        }
+        function check(){
+            //alert("Hello")
+            order=document.getElementById("order").value
+            if(order!=="None"){
+                //alert("Hello")
+                document.getElementById("quantity").disabled=false
+            }
+        }
+
+        function update(){
+            document.getElementById("cost").value="Rs. "+menu[order]*parseInt((document.getElementById("quantity").value))
+        }
+    </script>
+</body>
+</html>
